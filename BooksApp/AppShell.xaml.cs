@@ -32,5 +32,11 @@ namespace BooksApp
         {
             this.AppFrame.Navigate(typeof(AllBooks));
         }
+
+        private void OnSearchAppBarButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var pattern = this.tbSearch.Text;
+            this.AppFrame.Navigate(typeof(SearchPage), pattern);
+        }
     }
 }

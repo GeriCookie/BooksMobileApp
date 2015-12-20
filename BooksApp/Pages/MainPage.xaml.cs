@@ -1,5 +1,6 @@
 ﻿using BooksApp.Data.Contracts;
 using BooksApp.ViewModels;
+using BooksApp.ViewModels.Pages;
 using Windows.UI.Xaml.Controls;
 
 

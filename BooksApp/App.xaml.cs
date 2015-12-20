@@ -3,6 +3,7 @@ namespace BooksApp
 {
     using Pages;
     using System;
+    using ViewModels;
     using Windows.ApplicationModel;
     using Windows.ApplicationModel.Activation;
     using Windows.UI.Xaml;
@@ -71,5 +72,7 @@ namespace BooksApp
             var deferral = e.SuspendingOperation.GetDeferral();
             deferral.Complete();
         }
+
+        
     }
 }

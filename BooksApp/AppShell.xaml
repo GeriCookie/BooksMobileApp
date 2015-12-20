@@ -18,8 +18,8 @@
     <Page.TopAppBar>
         <AppBar>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBox PlaceholderText="Search"></TextBox>
-            <AppBarButton Icon="Find" Content="Search"/>
+            <TextBox PlaceholderText="Search" Name="tbSearch"></TextBox>
+            <AppBarButton Icon="Find" Content="Search" Click="OnSearchAppBarButtonClick"/>
             </StackPanel>
         </AppBar>
     </Page.TopAppBar>

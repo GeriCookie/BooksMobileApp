@@ -102,12 +102,18 @@
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\Contracts\IBooksData.cs" />
+    <Compile Include="Data\Contracts\IDetailBookData.cs" />
+    <Compile Include="Data\Contracts\ISearchData.cs" />
     <Compile Include="Data\Contracts\IUpdatesData.cs" />
     <Compile Include="Data\HttpBooksData.cs" />
+    <Compile Include="Data\HttpDetailBookData.cs" />
+    <Compile Include="Data\HttpSearchData.cs" />
     <Compile Include="Data\HttpUpdatesData.cs" />
     <Compile Include="Helpers\BoolToVisibilityConverter.cs" />
     <Compile Include="Http\HttpRequester.cs" />
     <Compile Include="Models\BookModel.cs" />
+    <Compile Include="Models\DetailBookModel.cs" />
+    <Compile Include="Models\ReviewModel.cs" />
     <Compile Include="Models\UpdateModel.cs" />
     <Compile Include="Pages\AddBook.xaml.cs">
       <DependentUpon>AddBook.xaml</DependentUpon>
@@ -115,16 +121,25 @@
     <Compile Include="Pages\AllBooks.xaml.cs">
       <DependentUpon>AllBooks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\BookPageDetails.xaml.cs">
+      <DependentUpon>BookPageDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MyBooks.xaml.cs">
       <DependentUpon>MyBooks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\BooksPageViewModel.cs" />
+    <Compile Include="ViewModels\DetailBookViewModel.cs" />
+    <Compile Include="ViewModels\Pages\BookPageDetailViewModel.cs" />
+    <Compile Include="ViewModels\Pages\BooksPageViewModel.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
-    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\Pages\SearchResultPageViewModel.cs" />
     <Compile Include="ViewModels\UpdateViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
@@ -161,11 +176,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\BookPageDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MyBooks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SearchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

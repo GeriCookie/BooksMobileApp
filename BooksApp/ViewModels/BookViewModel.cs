@@ -11,6 +11,7 @@ namespace BooksApp.ViewModels
     {
         public string Author { get; private set; }
         public string CoverUrl { get; private set; }
+        public string Id { get; private set; }
         public int? Pages { get; private set; }
         public int? Rating { get; private set; }
         public string Title { get; private set; }
@@ -19,6 +20,7 @@ namespace BooksApp.ViewModels
         {
             return new BookViewModel()
             {
+                Id = model.Id,
                 Title = model.Title,
                 Author = model.Author,
                 Rating = model.Rating,
