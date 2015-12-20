@@ -1,0 +1,57 @@
+﻿<Page
+    x:Class="BooksApp.AppShell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BooksApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="NavAppBarButton"
+               TargetType="AppBarButton">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </Page.Resources>
+
+    <Page.TopAppBar>
+        <AppBar>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBox PlaceholderText="Search"></TextBox>
+            <AppBarButton Icon="Find" Content="Search"/>
+            </StackPanel>
+        </AppBar>
+    </Page.TopAppBar>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>    
+        <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <AppBarButton Grid.Column="0" 
+                              Style="{StaticResource NavAppBarButton}" 
+                              Label="Updates"
+                              Icon="Home"
+                              Click="OnHomeAppBarButtonClick"/>
+                <AppBarButton Grid.Column="1" 
+                              Style="{StaticResource NavAppBarButton}" 
+                              Label="My Books"
+                              Icon="Bullets"
+                              Click="OnMyBooksAppBarButtonClick"/>
+                <AppBarButton Grid.Column="2" 
+                              Style="{StaticResource NavAppBarButton}" 
+                              Label="Books"
+                              Icon="AllApps"
+                              Click="OnAddBookAppBarButtonClick"/>
+            </Grid>
+        <Frame Grid.Row="1"
+                Name="tehFrame"/>
+    </Grid>
+</Page>
