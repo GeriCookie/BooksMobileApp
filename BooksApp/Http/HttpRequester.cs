@@ -20,7 +20,12 @@ namespace BooksApp.Http
             return await Send<T>(url, HttpMethod.Post, data, headers);            
         }
 
-        private static async Task<T> Send<T>(string url,HttpMethod method, object data = null, IDictionary<string, string> headers = null)
+        public static async Task<T> Put<T>(string url, object data, IDictionary<string, string> headers = null)
+        {
+            return await Send<T>(url, HttpMethod.Put, data, headers);
+        }
+
+        private static async Task<T> Send<T>(string url, HttpMethod method, object data = null, IDictionary<string, string> headers = null)
         {
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(new HttpMediaTypeWithQualityHeaderValue("application/json"));

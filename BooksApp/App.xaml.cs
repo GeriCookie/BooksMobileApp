@@ -1,6 +1,7 @@
 ﻿
 namespace BooksApp
 {
+    using Data;
     using Pages;
     using System;
     using ViewModels;
@@ -21,6 +22,7 @@ namespace BooksApp
                 Microsoft.ApplicationInsights.WindowsCollectors.Session);
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+            BooksDbContext.InitAsync();
         }
 
         protected override void OnLaunched(LaunchActivatedEventArgs e)

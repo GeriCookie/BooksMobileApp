@@ -34,7 +34,10 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
                 <AppBarButton Grid.Column="0" 
                               Style="{StaticResource NavAppBarButton}" 
                               Label="Updates"
@@ -49,8 +52,23 @@
                               Style="{StaticResource NavAppBarButton}" 
                               Label="Books"
                               Icon="AllApps"
+                              Click="OnAllBookAppBarButtonClick"/>
+            <AppBarButton Grid.Column="3" 
+                              Style="{StaticResource NavAppBarButton}" 
+                              Label="Login"
+                              Icon="Play"
+                              Click="OnLoginAppBarButtonClick"/>
+            <AppBarButton Grid.Column="4" 
+                              Style="{StaticResource NavAppBarButton}" 
+                              Label="Register"
+                              Icon="Account"
+                              Click="OnRegisterAppBarButtonClick"/>
+            <AppBarButton Grid.Column="5" 
+                              Style="{StaticResource NavAppBarButton}" 
+                              Label="Add Book"
+                              Icon="Add"
                               Click="OnAddBookAppBarButtonClick"/>
-            </Grid>
+        </Grid>
         <Frame Grid.Row="1"
                 Name="tehFrame"/>
     </Grid>
