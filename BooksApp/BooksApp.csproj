@@ -109,11 +109,18 @@
     <Compile Include="Data\HttpDetailBookData.cs" />
     <Compile Include="Data\HttpSearchData.cs" />
     <Compile Include="Data\HttpUpdatesData.cs" />
+    <Compile Include="Data\SQLiteTokenData.cs" />
     <Compile Include="Helpers\BoolToVisibilityConverter.cs" />
     <Compile Include="Http\HttpRequester.cs" />
+    <Compile Include="Models\AddBookRequestModel.cs" />
     <Compile Include="Models\BookModel.cs" />
     <Compile Include="Models\DetailBookModel.cs" />
+    <Compile Include="Models\LoginRequestModel.cs" />
+    <Compile Include="Models\LoginResponseModel.cs" />
+    <Compile Include="Models\RegisterRequestModel.cs" />
+    <Compile Include="Models\RegisterResponseModel.cs" />
     <Compile Include="Models\ReviewModel.cs" />
+    <Compile Include="Models\TokenModel.cs" />
     <Compile Include="Models\UpdateModel.cs" />
     <Compile Include="Pages\AddBook.xaml.cs">
       <DependentUpon>AddBook.xaml</DependentUpon>
@@ -124,11 +131,17 @@
     <Compile Include="Pages\BookPageDetails.xaml.cs">
       <DependentUpon>BookPageDetails.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MyBooks.xaml.cs">
       <DependentUpon>MyBooks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RegisterPage.xaml.cs">
+      <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SearchPage.xaml.cs">
       <DependentUpon>SearchPage.xaml</DependentUpon>
@@ -180,6 +193,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -188,10 +205,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SearchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="SQLite.WinRT, Version=3.9.2">
+      <Name>SQLite for Windows Runtime</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

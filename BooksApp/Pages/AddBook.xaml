@@ -7,7 +7,132 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Add Book" Style="{StaticResource PageTitle}"/>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+          Margin="10 10 10 10"
+          Width="500"
+          HorizontalAlignment="Center"
+          VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="0" 
+                   Margin="0 5 0 5"
+                   Text="Title :"/>
+        <TextBox Grid.Row="0"
+                 Grid.Column="1"
+                 Name="TitleTextBox"
+                 Margin="0 5 0 5"
+                 PlaceholderText="Enter a title"/>
+
+        <TextBlock Grid.Row="1"
+                   Grid.Column="0" 
+                   Margin="0 5 0 5"
+                   Text="Author :"/>
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 Name="AuthorTextBox"
+                 Margin="0 5 0 5"
+                 PlaceholderText="Enter an author"/>
+
+        <TextBlock Grid.Row="2"
+                   Grid.Column="0" 
+                   Margin="0 5 0 5"
+                   Text="Genres :"/>
+        <StackPanel Grid.Row="2"
+                    Grid.Column="1" 
+                    Orientation="Horizontal">
+            <TextBox Name="FirstGenre"
+                     Margin="0 5 0 5"
+                     Width="0.25"/>
+            <TextBox Name="SecondGenre"
+                     Margin="0 5 0 5"
+                     Width="0.25"/>
+            <TextBox Name="ThirsGenre"
+                     Margin="0 5 0 5"
+                     Width="0.25"/>
+            <TextBox Name="ForthGenre"
+                     Margin="0 5 0 5"
+                     Width="0.25"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="3"
+                   Grid.Column="0" 
+                   Margin="0 5 0 5"
+                   Text="Description :"/>
+        <TextBox Grid.Row="3"
+                 Grid.Column="1"
+                 Name="DescriptionTextBox"
+                 Margin="0 5 0 5"
+                 PlaceholderText="Enter a description"/>
+
+
+        <TextBlock Grid.Row="4"
+                   Grid.Column="0" 
+                   Margin="0 5 0 5"
+                   Text="Number of pages :"/>
+        <TextBox Grid.Row="4"
+                 Grid.Column="1"
+                 Name="PagesTextBox"
+                 Margin="0 5 0 5"
+                 PlaceholderText="Enter a number of pages"/>
+
+        <StackPanel Grid.Row="5"
+                    Grid.Column="0" 
+                    Orientation="Horizontal">
+            <Button Name="Upload"
+                    Margin="0 0 5 0"
+                    Content="Upload Picture"
+                    Click="UploadPictureOnClick"/>
+            <Button Name="Caprute"
+                    Margin="5 0 0 0"
+                    Content="Capture Picture"
+                    Click="CapturePictureOnClick"/>
+        </StackPanel>
+
+        <Grid Grid.Row="5"
+              Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.90*"/>
+                <ColumnDefinition Width="0.10*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0"
+                       Name="CoverPath"/>
+            <Image Grid.Column="1" 
+                   Visibility="Collapsed"
+                   Name="LoadingAnimation"
+                   Source="../../../Assets/loading.gif" />
+        </Grid>
+
+        <Button Grid.Row="6"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Name="Submit"
+                Margin="0 5 0 5"
+                HorizontalAlignment="Stretch"
+                Click="SubmitOnClick"
+                Content="Submit">
+        </Button>
+
+        <TextBlock Grid.Row="7"
+                Grid.Column="0"
+                Name="Result"
+                Margin="0 5 0 5"/>
     </Grid>
 </Page>

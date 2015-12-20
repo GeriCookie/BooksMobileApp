@@ -28,7 +28,7 @@ namespace BooksApp
             this.AppFrame.Navigate(typeof(MyBooks));
         }
 
-        private void OnAddBookAppBarButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private void OnAllBookAppBarButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             this.AppFrame.Navigate(typeof(AllBooks));
         }
@@ -37,6 +37,20 @@ namespace BooksApp
         {
             var pattern = this.tbSearch.Text;
             this.AppFrame.Navigate(typeof(SearchPage), pattern);
+        }
+        
+        private void OnLoginAppBarButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            this.AppFrame.Navigate(typeof(LoginPage));
+        }
+        private void OnRegisterAppBarButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            this.AppFrame.Navigate(typeof(RegisterPage));
+        }
+
+        private void OnAddBookAppBarButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            this.AppFrame.Navigate(typeof(AddBook));
         }
     }
 }

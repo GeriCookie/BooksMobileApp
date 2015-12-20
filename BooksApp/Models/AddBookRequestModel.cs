@@ -1,18 +1,11 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BooksApp.Models
+﻿namespace BooksApp.Models
 {
-    [JsonObject]
-    public class BookModel
-    {
-        [JsonProperty("_id")]
-        public string Id { get; set; }
+    using Newtonsoft.Json;
+    using System.Collections.Generic;
 
+    [JsonObject]
+    public class AddBookRequestModel
+    {
         [JsonProperty("title")]
         public string Title { get; set; }
 
