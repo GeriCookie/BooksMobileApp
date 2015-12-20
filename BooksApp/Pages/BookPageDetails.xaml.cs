@@ -1,45 +1,30 @@
-﻿namespace BooksApp.Pages
-{
-    using Data;
-    using Data.Contracts;
-    using ViewModels;
-    using ViewModels.Pages;
-    using Windows.UI.Xaml.Controls;
-    using Windows.UI.Xaml.Navigation;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+
+namespace BooksApp.Pages
+{
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
     public sealed partial class BookPageDetails : Page
     {
         public BookPageDetails()
         {
             this.InitializeComponent();
-            IDetailBookData detailBookData = new HttpDetailBookData(App.baseServerUrl + "/books");
-            this.ViewModel = new BookPageDetailViewModel(detailBookData);
-        }
-
-        public BookPageDetailViewModel ViewModel
-        {
-            get
-            {
-                return this.DataContext as BookPageDetailViewModel;
-            }
-            set
-            {
-                this.DataContext = value;
-            }
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            if (e.Parameter != null)
-            {
-                this.ViewModel.BookID = e.Parameter.ToString();
-            }
-            base.OnNavigatedTo(e);
-        }
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

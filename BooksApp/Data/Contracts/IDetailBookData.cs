@@ -9,6 +9,6 @@ namespace BooksApp.Data.Contracts
 {
     public interface IDetailBookData
     {
-        Task<DetailBookModel> GetBook(string id);
+        Task<DetailBookModel> GetBook();
     }
 }

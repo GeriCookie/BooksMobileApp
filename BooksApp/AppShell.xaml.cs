@@ -40,7 +40,6 @@ namespace BooksApp
         {
             var patterns = await BooksDbContext.GetAllPatternsAsync();
             var dropDownList = new List<string>();
-
             foreach (string pattern in patterns)
             {
                 if (pattern.Contains(sender.Text))
@@ -68,8 +67,10 @@ namespace BooksApp
             {
                 pattern = args.QueryText;
             }
-
+            
             await BooksDbContext.AddPattern(pattern);
+
+            this.SearchDecreaseWidth.Begin();
             this.AppFrame.Navigate(typeof(SearchPage), pattern);
         }
 
@@ -77,6 +78,7 @@ namespace BooksApp
         {
             this.AppFrame.Navigate(typeof(LoginPage));
         }
+
         private void OnRegisterAppBarButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             this.AppFrame.Navigate(typeof(RegisterPage));
@@ -89,13 +91,10 @@ namespace BooksApp
 
         private void AutoSuggestBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            this.SearchIncreaseWidth.Begin();
-        }
-
-        private void AutoSuggestBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            this.SearchDecreaseWidth.Begin();
-            this.SearchBox.Text = string.Empty;
+            if ((sender as AutoSuggestBox).Width < 400)
+            {
+                this.SearchIncreaseWidth.Begin();
+            }
         }
     }
 }

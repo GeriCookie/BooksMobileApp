@@ -51,7 +51,8 @@
             {
                 Pattern = pattern
             };
-            await connection.InsertAsync(newPattern);
+            
+            await connection.InsertOrReplaceAsync(newPattern);
         }
 
         public static async Task<IEnumerable<string>> GetAllPatternsAsync()

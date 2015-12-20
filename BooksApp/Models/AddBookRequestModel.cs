@@ -9,22 +9,19 @@
         [JsonProperty("title")]
         public string Title { get; set; }
 
-        [JsonProperty("author")]
+        [JsonProperty("author", NullValueHandling = NullValueHandling.Ignore)]
         public string Author { get; set; }
 
-        [JsonProperty("genres")]
+        [JsonProperty("genres", NullValueHandling = NullValueHandling.Ignore)]
         public IEnumerable<string> Genres { get; set; }
-
-        [JsonProperty("ratings")]
-        public int? Rating { get; set; }
-
-        [JsonProperty("description")]
+        
+        [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
 
-        [JsonProperty("pages")]
+        [JsonProperty("pages", NullValueHandling = NullValueHandling.Ignore)]
         public int? Pages { get; set; }
 
-        [JsonProperty("coverUrl")]
+        [JsonProperty("coverUrl", NullValueHandling = NullValueHandling.Ignore)]
         public string CoverUrl { get; set; }
     }
 }

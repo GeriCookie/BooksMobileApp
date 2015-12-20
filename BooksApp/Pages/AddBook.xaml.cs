@@ -37,13 +37,18 @@
 
             StorageFile picture = await picker.PickSingleFileAsync();
 
-            this.LoadingAnimation.Visibility = Visibility.Visible;
+            if (picture == null)
+            {
+                return;
+            }
+
+            this.LoadingAnimation.IsActive = true;
             this.Submit.IsEnabled = false;
 
             string link = await this.UploadInCloud(picture);
 
             this.CoverPath.Text = link;
-            this.LoadingAnimation.Visibility = Visibility.Collapsed;
+            this.LoadingAnimation.IsActive = false;
             this.Submit.IsEnabled = true;
         }
 
@@ -52,17 +57,21 @@
             var camera = new CameraCaptureUI();
 
             var photo = await camera.CaptureFileAsync(CameraCaptureUIMode.Photo);
-            if (photo != null)
+            if (photo == null)
             {
-                this.LoadingAnimation.Visibility = Visibility.Visible;
-                this.Submit.IsEnabled = false;
-
-                string link = await this.UploadInCloud(photo);
-
-                this.CoverPath.Text = link;
-                this.LoadingAnimation.Visibility = Visibility.Collapsed;
-                this.Submit.IsEnabled = true;
+                return;
             }
+
+            this.LoadingAnimation.Visibility = Visibility.Visible;
+            this.LoadingAnimation.IsActive = true;
+            this.Submit.IsEnabled = false;
+
+            string link = await this.UploadInCloud(photo);
+
+            this.CoverPath.Text = link;
+            this.LoadingAnimation.Visibility = Visibility.Collapsed;
+            this.LoadingAnimation.IsActive = false;
+            this.Submit.IsEnabled = true;
         }
 
         private async void SubmitOnClick(object sender, RoutedEventArgs e)
@@ -74,23 +83,30 @@
                 return;
             }
 
+            if (string.IsNullOrWhiteSpace(this.TitleTextBox.Text))
+            {
+                this.Result.Text = "Title is Required!";
+                return;
+            }
+
             var endpointUrl = App.baseServerUrl + "/books";
 
             var addBookRequestModel = new AddBookRequestModel
             {
                 Title = this.TitleTextBox.Text,
-                //Author = this.AuthorTextBox.Text == string.Empty ? null : this.AuthorTextBox.Text,
-                //Description = this.DescriptionTextBox.Text == string.Empty ? null : this.DescriptionTextBox.Text,
-                //Pages = this.PagesTextBox.Text == string.Empty ? new Nullable<int>() : int.Parse(this.PagesTextBox.Text),
-                CoverUrl = this.CoverPath.Text
+                Author = string.IsNullOrWhiteSpace(this.AuthorTextBox.Text) ? null : this.AuthorTextBox.Text,
+                Description = string.IsNullOrWhiteSpace(this.DescriptionTextBox.Text) ? null : this.DescriptionTextBox.Text,
+                Pages = string.IsNullOrWhiteSpace(this.PagesTextBox.Text) ? new Nullable<int>() : int.Parse(this.PagesTextBox.Text),
+                Genres = string.IsNullOrWhiteSpace(this.GenresTextBox.Text) ? null : this.GenresTextBox.Text.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries),
+                CoverUrl = string.IsNullOrWhiteSpace(this.CoverPath.Text) ? null : this.CoverPath.Text
             };
-
+            
             var headers = new Dictionary<string, string>();
             headers.Add("x-auth-key", token);
 
             object response = await HttpRequester.Post<object>(endpointUrl, addBookRequestModel, headers);
-            
-            this.Result.Text = response.ToString();
+
+            this.Result.Text = "Book Added!";
         }
 
         private async Task<string> UploadInCloud(StorageFile file)

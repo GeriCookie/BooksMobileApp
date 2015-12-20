@@ -31,8 +31,7 @@
                                 TextChanged="AutoSuggestBox_TextChanged"
                                 QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                                 SuggestionChosen="AutoSuggestBox_SuggestionChosen"
-                                GotFocus="AutoSuggestBox_GotFocus"
-                                LostFocus="AutoSuggestBox_LostFocus"/>
+                                GotFocus="AutoSuggestBox_GotFocus"/>
             </StackPanel>
         </AppBar>
     </Page.TopAppBar>

@@ -49,5 +49,12 @@
                 }
             }
         }
+
+        //private void OnViewBookButtonClick(object sender, RoutedEventArgs e)
+        //{
+        //    var book = (sender as Button).DataContext as BookViewModel;
+        //    AppShell shell = Window.Current.Content as AppShell;
+        //    shell.AppFrame.Navigate(typeof(BookPageDetails), book.Id);
+        //}
     }
 }
