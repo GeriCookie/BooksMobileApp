@@ -13,13 +13,26 @@
             <Setter Property="VerticalAlignment" Value="Stretch"/>
             <Setter Property="FontSize" Value="18"/>
         </Style>
+        <Storyboard x:Name="SearchIncreaseWidth">
+            <DoubleAnimation Storyboard.TargetName="SearchBox" Storyboard.TargetProperty="Width" From="200" To="400" Duration="0:0:0.5" EnableDependentAnimation="true" />
+        </Storyboard>
+        <Storyboard x:Name="SearchDecreaseWidth">
+            <DoubleAnimation Storyboard.TargetName="SearchBox" Storyboard.TargetProperty="Width" From="400" To="200" Duration="0:0:0.5" EnableDependentAnimation="true" />
+        </Storyboard>
     </Page.Resources>
 
     <Page.TopAppBar>
         <AppBar>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <TextBox PlaceholderText="Search" Name="tbSearch"></TextBox>
-            <AppBarButton Icon="Find" Content="Search" Click="OnSearchAppBarButtonClick"/>
+                <AutoSuggestBox Name="SearchBox"
+                                PlaceholderText="Search" 
+                                QueryIcon="Find" 
+                                Width="200"
+                                TextChanged="AutoSuggestBox_TextChanged"
+                                QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                                SuggestionChosen="AutoSuggestBox_SuggestionChosen"
+                                GotFocus="AutoSuggestBox_GotFocus"
+                                LostFocus="AutoSuggestBox_LostFocus"/>
             </StackPanel>
         </AppBar>
     </Page.TopAppBar>

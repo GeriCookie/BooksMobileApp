@@ -86,7 +86,7 @@
             };
 
             var headers = new Dictionary<string, string>();
-            headers.Add("x-auth-key", token.authKey);
+            headers.Add("x-auth-key", token);
 
             object response = await HttpRequester.Post<object>(endpointUrl, addBookRequestModel, headers);
             

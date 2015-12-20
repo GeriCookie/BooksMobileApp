@@ -39,12 +39,7 @@
             }
             else
             {
-                var userToken = new TokenModel
-                {
-                    authKey = response.AuthKey
-                };
-
-                await BooksDbContext.AddUserToken(userToken);
+                await BooksDbContext.AddUserToken(response.AuthKey);
 
                 this.ResultBlock.Text = "You are Logged In";
             }

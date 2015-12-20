@@ -109,7 +109,7 @@
     <Compile Include="Data\HttpDetailBookData.cs" />
     <Compile Include="Data\HttpSearchData.cs" />
     <Compile Include="Data\HttpUpdatesData.cs" />
-    <Compile Include="Data\SQLiteTokenData.cs" />
+    <Compile Include="Data\BooksDbContext.cs" />
     <Compile Include="Helpers\BoolToVisibilityConverter.cs" />
     <Compile Include="Http\HttpRequester.cs" />
     <Compile Include="Models\AddBookRequestModel.cs" />
@@ -117,6 +117,7 @@
     <Compile Include="Models\DetailBookModel.cs" />
     <Compile Include="Models\LoginRequestModel.cs" />
     <Compile Include="Models\LoginResponseModel.cs" />
+    <Compile Include="Models\PatternModel.cs" />
     <Compile Include="Models\RegisterRequestModel.cs" />
     <Compile Include="Models\RegisterResponseModel.cs" />
     <Compile Include="Models\ReviewModel.cs" />
