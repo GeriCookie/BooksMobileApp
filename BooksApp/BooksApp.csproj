@@ -111,6 +111,8 @@
     <Compile Include="Data\HttpUpdatesData.cs" />
     <Compile Include="Data\BooksDbContext.cs" />
     <Compile Include="Helpers\BoolToVisibilityConverter.cs" />
+    <Compile Include="Helpers\NoDescriptionConverter.cs" />
+    <Compile Include="Helpers\NoRatingConverter.cs" />
     <Compile Include="Http\HttpRequester.cs" />
     <Compile Include="Models\AddBookRequestModel.cs" />
     <Compile Include="Models\BookModel.cs" />
