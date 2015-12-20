@@ -8,6 +8,38 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Details Book" Style="{StaticResource PageTitle}" Grid.Row="0"/>
+        <Grid DataContext="{Binding Book}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Details Book" Style="{StaticResource PageTitle}" Grid.Row="0"/>
+                <Grid Grid.Row="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding Title}"
+                               Grid.Row="0"/>
+                <TextBlock Text="{Binding Author}"
+                               Grid.Row="1"/>
+                <TextBlock Text="{Binding Rating}"
+                               Grid.Row="2"/>
+                <Image Source="{Binding CoverUrl}"
+                           Grid.Row="3"/>
+                <ListBox Grid.Row="4"
+                          ItemsSource="{Binding Genres}"
+                         SelectionChanged="ListBox_SelectionChanged"/>
+                <ItemsControl Grid.Row="5"
+                              ItemsSource="{Binding Reviews}"/>
+
+            </Grid>
+            
+        </Grid>
+        
     </Grid>
 </Page>

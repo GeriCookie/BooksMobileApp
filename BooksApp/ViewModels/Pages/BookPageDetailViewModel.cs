@@ -10,12 +10,14 @@ namespace BooksApp.ViewModels.Pages
     public class BookPageDetailViewModel: ViewModelBase
     {
         private DetailBookViewModel book;
+        private string bookID;
         private IDetailBookData detailBookData;
 
         public BookPageDetailViewModel(IDetailBookData detailBookData)
         {
             this.detailBookData = detailBookData;
-            this.Refresh();
+            this.book = new DetailBookViewModel();
+            //this.Refresh();
         }
 
         public DetailBookViewModel Book
@@ -27,12 +29,32 @@ namespace BooksApp.ViewModels.Pages
             set
             {
                 this.book = value;
+                RaisePropertyChanged("Book");
             }
         }
 
-        private void Refresh()
+        public string BookID
         {
-            throw new NotImplementedException();
+            get
+            {
+                return this.bookID;
+            }
+            set
+            {
+                if (this.bookID == value)
+                {
+                    return;
+                }
+                this.bookID = value;
+                this.RaisePropertyChanged("BookId");
+                this.Refresh();
+            }
+        }
+
+        private async void Refresh()
+        {
+            var book = (await this.detailBookData.GetBook(this.BookID));
+            this.Book = DetailBookViewModel.FromModel(book);
         }
     }
 }

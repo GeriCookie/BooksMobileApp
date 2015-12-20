@@ -37,5 +37,6 @@ namespace BooksApp.Models
         [JsonProperty("reviews")]
         public IEnumerable<ReviewModel> Reviews { get; set; }
 
+        
     }
 }

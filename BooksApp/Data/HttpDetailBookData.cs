@@ -18,9 +18,10 @@ namespace BooksApp.Data
             this.url = url;
         }
 
-        public async Task<DetailBookModel> GetBook()
+        public async Task<DetailBookModel> GetBook(string id)
         {
-            DetailBookModel book = await HttpRequester.Get<DetailBookModel>(this.url);
+            var endpointUrl = this.url + "/" + id;
+            DetailBookModel book = await HttpRequester.Get<DetailBookModel>(endpointUrl);
             return book;
         }
     }

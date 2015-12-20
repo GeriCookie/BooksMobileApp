@@ -4,13 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BooksApp.Data.Contracts;
 
 namespace BooksApp.ViewModels
 {
     public class DetailBookViewModel
     {
+
         public string Author { get; private set; }
         public string CoverUrl { get; private set; }
+        public IEnumerable<string> Genres { get; private set; }
         public string Id { get; private set; }
         public int? Pages { get; private set; }
         public int? Rating { get; private set; }
@@ -27,7 +30,8 @@ namespace BooksApp.ViewModels
                 Rating = model.Rating,
                 CoverUrl = model.CoverUrl,
                 Pages = model.Pages,
-                Reviews = model.Reviews
+                Reviews = model.Reviews,
+                Genres = model.Genres
 
             };
         }
