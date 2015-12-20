@@ -13,6 +13,8 @@
 
     using BooksApp.Http;
     using BooksApp.Models;
+    using System.Collections.Generic;
+    using Data;
 
     public sealed partial class AddBook : Page
     {
@@ -65,8 +67,13 @@
 
         private async void SubmitOnClick(object sender, RoutedEventArgs e)
         {
-            //server does not require a token ??
-            //var token = await BooksDbContext.GetUserToken();
+            var token = await BooksDbContext.GetUserToken();
+            if (token == null)
+            {
+                this.Result.Text = "You are not logged in!";
+                return;
+            }
+
             var endpointUrl = App.baseServerUrl + "/books";
 
             var addBookRequestModel = new AddBookRequestModel
@@ -78,7 +85,10 @@
                 CoverUrl = this.CoverPath.Text
             };
 
-            object response = await HttpRequester.Post<object>(endpointUrl, addBookRequestModel);
+            var headers = new Dictionary<string, string>();
+            headers.Add("x-auth-key", token.authKey);
+
+            object response = await HttpRequester.Post<object>(endpointUrl, addBookRequestModel, headers);
             
             this.Result.Text = response.ToString();
         }

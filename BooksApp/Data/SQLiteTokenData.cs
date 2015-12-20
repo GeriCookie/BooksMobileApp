@@ -17,6 +17,7 @@
         {
             var connection = GetDbConnectionAsync();
             await connection.CreateTableAsync<TokenModel>();
+            await DelateUserToken(connection);
         }
 
         public static SQLiteAsyncConnection GetDbConnectionAsync()
