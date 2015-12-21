@@ -102,10 +102,12 @@
       <DependentUpon>AppShell.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data\Contracts\IBooksData.cs" />
+    <Compile Include="Data\Contracts\IChangeStatusData.cs" />
     <Compile Include="Data\Contracts\IDetailBookData.cs" />
     <Compile Include="Data\Contracts\ISearchData.cs" />
     <Compile Include="Data\Contracts\IUpdatesData.cs" />
     <Compile Include="Data\HttpBooksData.cs" />
+    <Compile Include="Data\HttpChangeStatusData.cs" />
     <Compile Include="Data\HttpDetailBookData.cs" />
     <Compile Include="Data\HttpSearchData.cs" />
     <Compile Include="Data\HttpUpdatesData.cs" />
@@ -117,6 +119,7 @@
     <Compile Include="Http\HttpRequester.cs" />
     <Compile Include="Models\AddBookRequestModel.cs" />
     <Compile Include="Models\BookModel.cs" />
+    <Compile Include="Models\ChangeStatusRequestModel.cs" />
     <Compile Include="Models\DetailBookModel.cs" />
     <Compile Include="Models\LoginRequestModel.cs" />
     <Compile Include="Models\LoginResponseModel.cs" />
@@ -131,6 +134,9 @@
     </Compile>
     <Compile Include="Pages\AllBooks.xaml.cs">
       <DependentUpon>AllBooks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BookChangeStatus.xaml.cs">
+      <DependentUpon>BookChangeStatus.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\BookPageDetails.xaml.cs">
       <DependentUpon>BookPageDetails.xaml</DependentUpon>
@@ -152,6 +158,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\DetailBookViewModel.cs" />
+    <Compile Include="ViewModels\Pages\BookChangeStatusViewModel.cs" />
     <Compile Include="ViewModels\Pages\BookPageDetailViewModel.cs" />
     <Compile Include="ViewModels\Pages\BooksPageViewModel.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
@@ -190,6 +197,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\AllBooks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BookChangeStatus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

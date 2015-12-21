@@ -25,6 +25,8 @@ namespace BooksApp
             BooksDbContext.InitAsync();
         }
 
+        public static string AuthenticationToken { get; private set; }
+
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 #if DEBUG
@@ -60,8 +62,14 @@ namespace BooksApp
             }
             Window.Current.Activate();
 
+            this.GetUserToken();
             //Check if auth key is available
             //AuthKey variable
+        }
+
+        public async void GetUserToken()
+        {
+            AuthenticationToken = await BooksDbContext.GetUserToken();
         }
 
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)

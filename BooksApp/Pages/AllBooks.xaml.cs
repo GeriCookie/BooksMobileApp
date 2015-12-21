@@ -47,14 +47,13 @@
                     AppShell shell = Windows.UI.Xaml.Window.Current.Content as AppShell;
                     shell.AppFrame.Navigate(typeof(BookPageDetails), book.Id);
                 }
+                if (buttonTag == "status")
+                {
+                    var book = (btn as Button).DataContext as BookViewModel;
+                    AppShell shell = Windows.UI.Xaml.Window.Current.Content as AppShell;
+                    shell.AppFrame.Navigate(typeof(BookChangeStatus), book.Id);
+                }
             }
         }
-
-        //private void OnViewBookButtonClick(object sender, RoutedEventArgs e)
-        //{
-        //    var book = (sender as Button).DataContext as BookViewModel;
-        //    AppShell shell = Window.Current.Content as AppShell;
-        //    shell.AppFrame.Navigate(typeof(BookPageDetails), book.Id);
-        //}
     }
 }
