@@ -43,30 +43,21 @@
         var buttonTag = (btn as Button).Tag.ToString();
         if (buttonTag == "viewBook")
         {
-
-            var textBlock = e.OriginalSource;
-            if (textBlock is TextBlock)
-            {
-                var btn = textBlock as DependencyObject;
-                while (btn != null && !(btn is Button))
-                {
-                    btn = VisualTreeHelper.GetParent(btn);
-                }
-
-                var buttonTag = (btn as Button).Tag.ToString();
-                if (buttonTag == "viewBook")
-                {
-                    var book = (btn as Button).DataContext as BookViewModel;
-                    AppShell shell = Windows.UI.Xaml.Window.Current.Content as AppShell;
-                    shell.AppFrame.Navigate(typeof(BookPageDetails), book.Id);
-                }
-                if (buttonTag == "status")
-                {
-                    var book = (btn as Button).DataContext as BookViewModel;
-                    AppShell shell = Windows.UI.Xaml.Window.Current.Content as AppShell;
-                    shell.AppFrame.Navigate(typeof(BookChangeStatus), book.Id);
-                }
-            }
+          var book = (btn as Button).DataContext as BookViewModel;
+          AppShell shell = Windows.UI.Xaml.Window.Current.Content as AppShell;
+          shell.AppFrame.Navigate(typeof(BookPageDetails), book.Id);
         }
+        if (buttonTag == "status")
+        {
+          var book = (btn as Button).DataContext as BookViewModel;
+          AppShell shell = Windows.UI.Xaml.Window.Current.Content as AppShell;
+          shell.AppFrame.Navigate(typeof(BookChangeStatus), book.Id);
+        }
+      }
     }
+    private void OnAddBookAppBarButtonClick(object sender, RoutedEventArgs e)
+    {
+      this.Frame.Navigate(typeof(AddBook));
+    }
+  }
 }
