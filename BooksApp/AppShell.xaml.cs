@@ -84,11 +84,6 @@ namespace BooksApp
             this.AppFrame.Navigate(typeof(RegisterPage));
         }
 
-        private void OnAddBookAppBarButtonClick(object sender, RoutedEventArgs e)
-        {
-            this.AppFrame.Navigate(typeof(AddBook));
-        }
-
         private void AutoSuggestBox_GotFocus(object sender, RoutedEventArgs e)
         {
             if ((sender as AutoSuggestBox).Width < 400)

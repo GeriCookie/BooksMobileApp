@@ -9,7 +9,7 @@
     mc:Ignorable="d">
     <Page.Resources>
         <helpers:BoolToVisibilityConverter x:Key="boolToVisibilityConverter"/>
-        
+
     </Page.Resources>
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid>
@@ -17,9 +17,22 @@
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="All Books" Style="{StaticResource PageTitle}" Grid.Row="0"/>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="60"/>
+                </Grid.ColumnDefinitions>
+                <AppBarButton Label="Add Book"
+                              Icon="Add"
+                              Click="OnAddBookAppBarButtonClick"
+                              Grid.Column="0"/>
+                <TextBlock Text="All Books" 
+                           Style="{StaticResource PageTitle}" 
+                           Grid.Column="1"/>
+            </Grid>
             <ScrollViewer Grid.Row="1">
-            <ItemsControl ItemsSource="{Binding Books}"
+                <ItemsControl ItemsSource="{Binding Books}"
                           ItemTemplate="{StaticResource BookTemplate}"
                           
                           Tapped="OnBookTapped"/>
