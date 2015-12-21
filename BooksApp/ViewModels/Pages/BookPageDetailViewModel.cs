@@ -7,51 +7,53 @@ using System.Threading.Tasks;
 
 namespace BooksApp.ViewModels.Pages
 {
-  public class BookPageDetailViewModel : ViewModelBase
-  {
-    private DetailBookViewModel book;
-    private IDetailBookData detailBookData;
-    private string bookdID;
-
-    public BookPageDetailViewModel(IDetailBookData detailBookData)
+    public class BookPageDetailViewModel : ViewModelBase
     {
-      this.detailBookData = detailBookData;
-      this.Refresh();
-    }
+        private DetailBookViewModel book;
+        private IDetailBookData detailBookData;
+        private string bookdID;
 
-    public string BookID
-    {
-      get
-      {
-        return this.bookdID;
-      }
-      set
-      {
-        if (this.bookdID == value)
+        public BookPageDetailViewModel(IDetailBookData detailBookData)
         {
-          return;
+            this.detailBookData = detailBookData;
         }
-        this.bookdID = value;
-        this.RaisePropertyChanged("BookID");
-      }
-    }
 
-    public DetailBookViewModel Book
-    {
-      get
-      {
-        return this.book;
-      }
-      set
-      {
-        this.book = value;
-      }
-    }
+        public string BookID
+        {
+            get
+            {
+                return this.bookdID;
+            }
+            set
+            {
+                if (this.bookdID == value)
+                {
+                    return;
+                }
+                this.bookdID = value;
+                this.RaisePropertyChanged("BookID");
+                this.Refresh();
 
-    private async void Refresh()
-    {
-      var book = (await this.detailBookData.GetBook(this.BookID));
-      this.Book = DetailBookViewModel.FromModel(book);
+            }
+        }
+
+        public DetailBookViewModel Book
+        {
+            get
+            {
+                return this.book;
+            }
+            set
+            {
+                this.book = value;
+                this.RaisePropertyChanged("Book");
+            }
+        }
+
+        private async void Refresh()
+        {
+            var book = (await this.detailBookData.GetBook(this.BookID));
+            this.Book = DetailBookViewModel.FromModel(book);
+        }
     }
-  }
 }
