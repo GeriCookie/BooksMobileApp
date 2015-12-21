@@ -34,6 +34,11 @@
                               Label="Register"
                               Icon="Account"
                               Click="OnRegisterAppBarButtonClick"/>
+                <AppBarButton Grid.Column="5" 
+                              Style="{StaticResource NavAppBarButton}" 
+                              Label="Logout"
+                              Icon="Admin"
+                              Click="OnLogoutAppBarButtonClick"/>
                 
                 <AutoSuggestBox Name="SearchBox"
                                 PlaceholderText="Search" 

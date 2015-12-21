@@ -8,7 +8,33 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="My Books" Style="{StaticResource PageTitle}"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="My Books" Style="{StaticResource PageTitle}"
+                   Grid.Row="0"/>
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="1">
+            <Button Content="Want to read" 
+                     Tag="wantToRead"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch"
+                     Margin="5"
+                     Click="OnWantToReadButtonClick"/>
+            <Button  Content="Currently Reading" 
+                     Tag="currentlyReading"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch"
+                     Margin="5"
+                     Click="OnCurrentlyReadingButtonClick"/>
+            <Button  Content="Read" 
+                     Tag="read"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch"
+                     Margin="5"
+                     Click="OnReadButtonClick"/>
+        </StackPanel>
+        
     </Grid>
 </Page>

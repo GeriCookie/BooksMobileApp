@@ -86,6 +86,13 @@ namespace BooksApp
             this.AppFrame.Navigate(typeof(RegisterPage));
         }
 
+        private async void OnLogoutAppBarButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            var userToken = await BooksDbContext.GetUserToken();
+            bool isLoggedIn = userToken != null;
+            this.AppFrame.Navigate(typeof(LogoutPage), isLoggedIn);
+        }
+
         private void AutoSuggestBox_GotFocus(object sender, RoutedEventArgs e)
         {
             this.SearchIncreaseWidth.Begin();

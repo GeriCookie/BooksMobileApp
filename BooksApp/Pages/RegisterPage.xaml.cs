@@ -45,7 +45,8 @@
             }
             else
             {
-                this.ResultBlock.Text = "You are registred";
+                AppShell shell = Windows.UI.Xaml.Window.Current.Content as AppShell;
+                shell.AppFrame.Navigate(typeof(LoginPage), false);
             }
         }
     }

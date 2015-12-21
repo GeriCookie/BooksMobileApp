@@ -11,7 +11,7 @@
     public BookPageDetails()
     {
       this.InitializeComponent();
-      IDetailBookData detailBookData = new HttpDetailBookData(App.baseServerUrl);
+      IDetailBookData detailBookData = new HttpDetailBookData(App.baseServerUrl + "/books");
       this.ViewModel = new BookPageDetailViewModel(detailBookData);
     }
 

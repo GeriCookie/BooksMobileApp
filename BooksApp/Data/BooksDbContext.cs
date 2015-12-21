@@ -23,7 +23,7 @@
 
             await connection.CreateTableAsync<TokenModel>();
             await connection.CreateTableAsync<PatternModel>();
-            await DelateUserToken(connection);
+            //await DelateUserToken(connection);
         }
 
         public static SQLiteAsyncConnection GetDbConnectionAsync()

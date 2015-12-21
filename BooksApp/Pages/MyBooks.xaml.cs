@@ -26,5 +26,23 @@ namespace BooksApp.Pages
         {
             this.InitializeComponent();
         }
+
+        private void OnWantToReadButtonClick(object sender, RoutedEventArgs e)
+        {
+            AppShell shell = Windows.UI.Xaml.Window.Current.Content as AppShell;
+            shell.AppFrame.Navigate(typeof(BooksWantToRead));
+        }
+
+        private void OnCurrentlyReadingButtonClick(object sender, RoutedEventArgs e)
+        {
+            AppShell shell = Windows.UI.Xaml.Window.Current.Content as AppShell;
+            shell.AppFrame.Navigate(typeof(BooksCurrentlyReading));
+        }
+
+        private void OnReadButtonClick(object sender, RoutedEventArgs e)
+        {
+            AppShell shell = Windows.UI.Xaml.Window.Current.Content as AppShell;
+            shell.AppFrame.Navigate(typeof(BooksRead));
+        }
     }
 }

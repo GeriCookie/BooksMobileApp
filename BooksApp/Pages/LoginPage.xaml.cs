@@ -2,12 +2,13 @@
 {
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
+    using Windows.UI.Xaml.Navigation;
 
     using BooksApp.Data;
     using BooksApp.Http;
     using BooksApp.Models;
     using ViewModels.Pages;
-    using Windows.UI.Xaml.Navigation;
+
     public sealed partial class LoginPage : Page
     {
         public LoginPage()
@@ -60,6 +61,8 @@
             {
                 await BooksDbContext.AddUserToken(response.AuthKey);
                 this.ViewModel.IsUserLoggedIn = true;
+                AppShell shell = Windows.UI.Xaml.Window.Current.Content as AppShell;
+                shell.AppFrame.Navigate(typeof(AllBooks));
             }
         }
     }

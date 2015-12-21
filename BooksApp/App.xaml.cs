@@ -58,7 +58,7 @@ namespace BooksApp
             //else login
             if (shell.AppFrame.Content == null)
             {
-                shell.AppFrame.Navigate(typeof(MainPage), e.Arguments);
+                shell.AppFrame.Navigate(typeof(AllBooks), e.Arguments);
             }
             Window.Current.Activate();
 
