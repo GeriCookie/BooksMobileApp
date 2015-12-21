@@ -9,19 +9,20 @@ using BooksApp.Http;
 
 namespace BooksApp.Data
 {
-    public class HttpDetailBookData : IDetailBookData
+  public class HttpDetailBookData : IDetailBookData
+  {
+    private string url;
+
+    public HttpDetailBookData(string url)
     {
-        private string url;
-
-        public HttpDetailBookData(string url)
-        {
-            this.url = url;
-        }
-
-        public async Task<DetailBookModel> GetBook()
-        {
-            DetailBookModel book = await HttpRequester.Get<DetailBookModel>(this.url);
-            return book;
-        }
+      this.url = url;
     }
+
+    public async Task<DetailBookModel> GetBook(string id)
+    {
+      var endpointUrl = this.url + "/" + id;
+      DetailBookModel book = await HttpRequester.Get<DetailBookModel>(endpointUrl);
+      return book;
+    }
+  }
 }

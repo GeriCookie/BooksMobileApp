@@ -7,32 +7,51 @@ using System.Threading.Tasks;
 
 namespace BooksApp.ViewModels.Pages
 {
-    public class BookPageDetailViewModel: ViewModelBase
+  public class BookPageDetailViewModel : ViewModelBase
+  {
+    private DetailBookViewModel book;
+    private IDetailBookData detailBookData;
+    private string bookdID;
+
+    public BookPageDetailViewModel(IDetailBookData detailBookData)
     {
-        private DetailBookViewModel book;
-        private IDetailBookData detailBookData;
-
-        public BookPageDetailViewModel(IDetailBookData detailBookData)
-        {
-            this.detailBookData = detailBookData;
-            this.Refresh();
-        }
-
-        public DetailBookViewModel Book
-        {
-            get
-            {
-                return this.book;
-            }
-            set
-            {
-                this.book = value;
-            }
-        }
-
-        private void Refresh()
-        {
-            throw new NotImplementedException();
-        }
+      this.detailBookData = detailBookData;
+      this.Refresh();
     }
+
+    public string BookID
+    {
+      get
+      {
+        return this.bookdID;
+      }
+      set
+      {
+        if (this.bookdID == value)
+        {
+          return;
+        }
+        this.bookdID = value;
+        this.RaisePropertyChanged("BookID");
+      }
+    }
+
+    public DetailBookViewModel Book
+    {
+      get
+      {
+        return this.book;
+      }
+      set
+      {
+        this.book = value;
+      }
+    }
+
+    private async void Refresh()
+    {
+      var book = (await this.detailBookData.GetBook(this.BookID));
+      this.Book = DetailBookViewModel.FromModel(book);
+    }
+  }
 }
