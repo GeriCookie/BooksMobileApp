@@ -9,12 +9,12 @@ namespace BooksApp.ViewModels
 {
   public class BookViewModel : ViewModelBase
   {
-    public string Author { get; private set; }
-    public string CoverUrl { get; private set; }
-    public string Id { get; private set; }
-    public int? Pages { get; private set; }
-    public int? Rating { get; private set; }
-    public string Title { get; private set; }
+    public string Author { get; protected set; }
+    public string CoverUrl { get; protected set; }
+    public string Id { get; protected set; }
+    public int? Pages { get; protected set; }
+    public int? Rating { get; protected set; }
+    public string Title { get; protected set; }
 
     public string Description { get; set; }
 

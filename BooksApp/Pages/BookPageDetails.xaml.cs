@@ -40,5 +40,13 @@
     {
 
     }
+
+    private void OnBackAppBarButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+    {
+      if (this.Frame.CanGoBack)
+      {
+        this.Frame.GoBack();
+      }
+    }
   }
 }

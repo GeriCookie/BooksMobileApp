@@ -114,6 +114,7 @@
     <Compile Include="Helpers\NoDescriptionConverter.cs" />
     <Compile Include="Helpers\NoImageConverter.cs" />
     <Compile Include="Helpers\NoRatingConverter.cs" />
+    <Compile Include="Helpers\NoReviewAuthorConverter.cs" />
     <Compile Include="Http\HttpRequester.cs" />
     <Compile Include="Models\AddBookRequestModel.cs" />
     <Compile Include="Models\BookModel.cs" />

@@ -20,8 +20,9 @@
             </Grid.RowDefinitions>
             <TextBlock Text="Search results" Style="{StaticResource PageTitle}" Grid.Row="0"/>
             <ScrollViewer Grid.Row="1">
-                <ItemsControl ItemsSource="{Binding Books}"
-                          ItemTemplate="{StaticResource BookTemplate}"/>
+                <ItemsControl Tapped="OnBookTapped"
+                              ItemsSource="{Binding Books}"
+                              ItemTemplate="{StaticResource BookTemplate}"/>
             </ScrollViewer>
         </Grid>
         <ProgressRing IsActive ="{Binding AreBooksLoading}" Visibility="{Binding AreBooksLoading, Converter={StaticResource boolToVisibilityConverter}}"/>

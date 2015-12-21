@@ -12,29 +12,75 @@
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Details Book" Style="{StaticResource PageTitle}" Grid.Row="0"/>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <AppBarButton Icon="Back"
+                              Content="Back"
+                              Click="OnBackAppBarButtonClick"
+                              Grid.Column="0"/>
+                <TextBlock Text="{Binding Title}" 
+                           Style="{StaticResource PageTitle}" 
+                           Grid.Row="0"
+                           TextWrapping="WrapWholeWords"
+                           Grid.Column="1"/>
+            </Grid>
             <Grid Grid.Row="1" >
                 <Grid.RowDefinitions>
+                    <!-- Author -->
+                    <RowDefinition Height="0.2*" />
+                    <!-- Rating -->
+                    <RowDefinition Height="20"/>
+                    <!-- Image and Description -->
                     <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
+                    <!-- Genres -->
+                    <RowDefinition Height="50"/>
+                    <!-- Reviews -->
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="{Binding Title}"
-                           Grid.Row="0"/>
-                <TextBlock Text="{Binding Author}"
-                           Grid.Row="1"/>
                 <TextBlock Text="{Binding Rating}"
-                           Grid.Row="2"/>
-                <Image Source="{Binding CoverUrl}"
-                       Grid.Row="3"/>
-                <ListBox Grid.Row="4"
-                         ItemsSource="{Binding Genres}"
-                         SelectionChanged="ListBox_SelectionChanged"/>
-                <ItemsControl Grid.Row="5"
-                              ItemsSource="{Binding Reviews}"/>
+                           Grid.Row="0"/>
+
+                <StackPanel Orientation="Horizontal"
+                           Grid.Row="1">
+                    <TextBlock Text="By " />
+                    <TextBlock Text="{Binding Author}"/>
+                </StackPanel>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0"
+                        Style="{StaticResource BorderedImage}">
+                        <Image Source="{Binding CoverUrl, Converter={StaticResource noImageConverter}}"
+                           MinHeight="200"/>
+                    </Border>
+                    <TextBlock Text="{Binding Description}"
+                               TextWrapping="WrapWholeWords"
+                               TextAlignment="Justify"
+                               Grid.Column="1"
+                               Padding="15"/>
+                </Grid>
+
+                <ScrollViewer Grid.Row="3" 
+                              HorizontalScrollBarVisibility="Hidden"
+                              VerticalScrollBarVisibility="Hidden">
+                    <ListBox ItemsSource="{Binding Genres}"
+                         SelectionChanged="ListBox_SelectionChanged">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
+                </ScrollViewer>
+                <ItemsControl Grid.Row="4"
+                              ItemsSource="{Binding Reviews}" 
+                              ItemTemplate="{StaticResource ReviewTemplate}"/>
             </Grid>
         </Grid>
     </Grid>

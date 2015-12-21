@@ -7,21 +7,11 @@ using System.Threading.Tasks;
 
 namespace BooksApp.ViewModels
 {
-  public class DetailBookViewModel
+  public class DetailBookViewModel : BookViewModel
   {
-    public string Author { get; private set; }
-    public string CoverUrl { get; private set; }
     public IEnumerable<string> Genres { get; private set; }
 
-    public string Id { get; private set; }
-
-    public int? Pages { get; private set; }
-
-    public int? Rating { get; private set; }
-
     public IEnumerable<ReviewModel> Reviews { get; private set; }
-
-    public string Title { get; private set; }
 
     public static DetailBookViewModel FromModel(DetailBookModel model)
     {
@@ -34,7 +24,8 @@ namespace BooksApp.ViewModels
         CoverUrl = model.CoverUrl,
         Pages = model.Pages,
         Reviews = model.Reviews,
-        Genres = model.Genres
+        Genres = model.Genres,
+        Description = model.Description
       };
     }
   }
