@@ -112,6 +112,8 @@
     <Compile Include="Data\HttpSearchData.cs" />
     <Compile Include="Data\HttpUpdatesData.cs" />
     <Compile Include="Data\BooksDbContext.cs" />
+    <Compile Include="Helpers\BoolToIsEnabledLogedInConverter.cs" />
+    <Compile Include="Helpers\BoolToLoginMessageConverter.cs" />
     <Compile Include="Helpers\BoolToVisibilityConverter.cs" />
     <Compile Include="Helpers\NoDescriptionConverter.cs" />
     <Compile Include="Helpers\NoImageConverter.cs" />
@@ -163,6 +165,7 @@
     <Compile Include="ViewModels\Pages\BookPageDetailViewModel.cs" />
     <Compile Include="ViewModels\Pages\BooksPageViewModel.cs" />
     <Compile Include="ViewModels\BookViewModel.cs" />
+    <Compile Include="ViewModels\Pages\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\Pages\MainPageViewModel.cs" />
     <Compile Include="ViewModels\Pages\SearchResultPageViewModel.cs" />
     <Compile Include="ViewModels\UpdateViewModel.cs" />

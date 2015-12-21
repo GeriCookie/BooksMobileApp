@@ -5,7 +5,13 @@
     xmlns:local="using:BooksApp.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:helpers="using:BooksApp.Helpers"
     mc:Ignorable="d">
+
+    <Page.Resources>
+        <helpers:BoolToIsEnabledLogedInConverter x:Key="boolToIsEnabledLogedInConverter"/>
+        <helpers:BoolToLoginMessageConverter x:Key="boolToLoginMessageConverter"/>
+    </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
           Margin="10 10 10 10"
@@ -32,7 +38,7 @@
                  Name="UsernameTextBox"
                  Margin="0 5 0 5"
                  PlaceholderText="Enter your username"/>
-        
+
         <TextBlock Grid.Row="1"
                    Grid.Column="0" 
                    Margin="0 5 0 5"
@@ -42,14 +48,15 @@
                  Name="PasswordTextBox"
                  Margin="0 5 0 5"
                  PlaceholderText="Enter your password"/>
-        
+
         <Button Grid.Row="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
-                Content="Login"
+                Content="{Binding IsUserLoggedIn, Converter={StaticResource boolToLoginMessageConverter}}"
                 Click="LoginOnClick"
+                IsEnabled="{Binding IsUserLoggedIn, Converter={StaticResource boolToIsEnabledLogedInConverter}}"
                 HorizontalAlignment="Stretch"/>
-        
+
         <TextBlock Name="ResultBlock"
                    Grid.Row="3"
                    Grid.Column="0"

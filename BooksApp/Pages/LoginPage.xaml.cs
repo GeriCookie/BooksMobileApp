@@ -6,12 +6,30 @@
     using BooksApp.Data;
     using BooksApp.Http;
     using BooksApp.Models;
-
+    using ViewModels.Pages;
+    using Windows.UI.Xaml.Navigation;
     public sealed partial class LoginPage : Page
     {
         public LoginPage()
         {
             this.InitializeComponent();
+        }
+
+        public LoginPageViewModel ViewModel
+        {
+            get
+            {
+                return this.DataContext as LoginPageViewModel;
+            }
+            private set
+            {
+                this.DataContext = value;
+            }
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            this.ViewModel = new LoginPageViewModel((bool)e.Parameter);
         }
 
         private async void LoginOnClick(object sender, RoutedEventArgs e)
@@ -30,18 +48,18 @@
                 Username = this.UsernameTextBox.Text,
                 Password = this.PasswordTextBox.Password
             };
-            
+
             LoginResponseModel response = await HttpRequester.Put<LoginResponseModel>(endpointUrl, loginRequestModel);
 
             if (response.Message != null)
             {
                 this.ResultBlock.Text = response.Message;
+                this.ViewModel.IsUserLoggedIn = false;
             }
             else
             {
                 await BooksDbContext.AddUserToken(response.AuthKey);
-
-                this.ResultBlock.Text = "You are Logged In";
+                this.ViewModel.IsUserLoggedIn = true;
             }
         }
     }

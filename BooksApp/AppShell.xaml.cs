@@ -74,9 +74,11 @@ namespace BooksApp
             this.AppFrame.Navigate(typeof(SearchPage), pattern);
         }
 
-        private void OnLoginAppBarButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void OnLoginAppBarButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            this.AppFrame.Navigate(typeof(LoginPage));
+            var userToken = await BooksDbContext.GetUserToken();
+            bool isLoggedIn = userToken != null;
+            this.AppFrame.Navigate(typeof(LoginPage), isLoggedIn);
         }
 
         private void OnRegisterAppBarButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
@@ -86,10 +88,7 @@ namespace BooksApp
 
         private void AutoSuggestBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if ((sender as AutoSuggestBox).Width < 400)
-            {
-                this.SearchIncreaseWidth.Begin();
-            }
+            this.SearchIncreaseWidth.Begin();
         }
     }
 }
