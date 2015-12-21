@@ -12,11 +12,12 @@
         return null;
       }
 
-      var description = value.ToString().Trim();
-      if (string.IsNullOrEmpty(description))
+      if (value == null || string.IsNullOrEmpty(value.ToString().Trim()))
       {
         return "No description";
       }
+
+      var description = value.ToString();
 
       return description.Substring(0, Math.Min(400, description.Length));
     }

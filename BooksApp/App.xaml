@@ -8,6 +8,7 @@
     <Application.Resources>
         <helpers:NoDescriptionConverter x:Key="noDescriptionConverter" />
         <helpers:NoRatingConverter x:Key="noRatingConverter" />
+        <helpers:NoImageConverter x:Key="noImageConverter" />
         <Style x:Key="PageTitle"
                TargetType="TextBlock">
             <Setter Property="FontSize" Value="36"/>
@@ -47,8 +48,8 @@
                         BorderThickness="2"
                         CornerRadius="5"
                         Margin="15">
-                    <Image Source="{Binding CoverUrl}"
-                           Height="100"/>
+                    <Image Source="{Binding CoverUrl, Converter={StaticResource noImageConverter}}"
+                           MinHeight="200"/>
                 </Border>
                 <Grid Grid.Row="1"
                       Grid.Column="1">
