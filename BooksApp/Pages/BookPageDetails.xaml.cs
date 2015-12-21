@@ -38,7 +38,16 @@
 
     private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
+      var item = e.AddedItems[0];
+      //TODO navigate to page with genres
+    }
 
+    private void OnBackAppBarButtonClick(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+    {
+      if (this.Frame.CanGoBack)
+      {
+        this.Frame.GoBack();
+      }
     }
   }
 }
