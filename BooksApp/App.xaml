@@ -47,7 +47,8 @@
                         BorderThickness="2"
                         CornerRadius="5"
                         Margin="15">
-                    <Image Source="{Binding CoverUrl}"/>
+                    <Image Source="{Binding CoverUrl}"
+                           Height="100"/>
                 </Border>
                 <Grid Grid.Row="1"
                       Grid.Column="1">
